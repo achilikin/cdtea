@@ -5,15 +5,18 @@ import sys
 import time
 import RPi.GPIO as GPIO
 
-pin_closed = 17
-pin_open = 18
-pin_btn = 22
-pin_red = 23
-pin_gnd = 24
-pin_led = 25
+pin_closed = 17 # CD tray sensor
+pin_open = 18   # CD tray sensor
+pin_btn = 22    # CD button
+pin_red = 23    # motor's red wire
+pin_gnd = 24    # motor's gnd wire 
+pin_led = 25    # LED
 
-deb = False
-stop = False
+deb = False   # debug output
+stop = False  # termination flag
+
+presoaking = 10 # pre-soaking time, sec
+soak = 5        # soaking time, sec
 
 GPIO.setmode(GPIO.BCM)
 
@@ -25,6 +28,7 @@ GPIO.setup(pin_closed, GPIO.IN)
 GPIO.setup(pin_open, GPIO.IN)
 GPIO.setup(pin_btn, GPIO.IN)
 
+# motor control function
 def motor(cmd):
 	if (cmd == 'open'):
 		GPIO.output(pin_red, False)
@@ -38,10 +42,11 @@ def motor(cmd):
 		GPIO.output(pin_red, False)
 		GPIO.output(pin_gnd, False)
 		return
-	
-def door_open(brewing):
+
+# opens CD tray
+def tray_open(brewing):
 	if (GPIO.input(pin_open) == False):
-		print('\tdoor already opened')
+		if (deb): print('\ttray already opened')
 		return
 
 	led = 1
@@ -59,12 +64,13 @@ def door_open(brewing):
 	if (brewing and GPIO.input(pin_btn) == 0):
 		global stop
 		stop = True
-	if (deb): print('\tdoor opened')
+	if (deb): print('\ttray opened')
 	return
 
-def door_close():
+# closes CD tray
+def tray_close():
 	if (GPIO.input(pin_closed) == False):
-		print("\tdoor already closed")
+		if (deb): print("\ttray already closed")
 		return
 	led = 1
 	tstamp = time.time()
@@ -77,12 +83,12 @@ def door_close():
 			tstamp = time.time()
 			led = led ^ 1	
 			GPIO.output(pin_led, led)
-
 	motor('stop')
-	if (deb): print("\tdoor closed")
+	if (deb): print("\ttray closed")
 	GPIO.output(pin_led, False)
 	return
 
+# sleeps and flashes LED
 def led_sleep(sleep):
 	led = 1
 	tstamp = time.time()
@@ -92,24 +98,25 @@ def led_sleep(sleep):
 		led = led ^ 1	
 		GPIO.output(pin_led, led)
 		if (GPIO.input(pin_btn) == 0):
-			door_open(False)
+			tray_open(False)
 			global stop
 			stop = True
 			break
-
 	GPIO.output(pin_led, False)
-	
-def door_cycle(i, brewing):
+
+# cycles through open-close-sleep states	
+def tray_cycle(i, brewing):
 	global stop
 	start = time.time()
 	if (deb): print("starting cycle {}".format(i+1))
-	door_open(brewing)
+	tray_open(brewing)
 	if (stop == False):
-		door_close()
-		led_sleep(5)
+		tray_close()
+		led_sleep(soak)
 	end = time.time()
 	if (deb): print('cycle time {0:.2f} sec'.format(end - start))
-	
+
+# main	
 try:
 	# one command line parameter - brewing time, minutes 
 	brewing = len(sys.argv)
@@ -122,13 +129,13 @@ try:
 	steps = int(steps)
 	print('Brewing time is set to {} minutes or {} cycles'.format(brewing, steps))
 	if (deb):
-		print('door sensor state:')
+		print('tray sensor state:')
 		print('\tclosed: ', GPIO.input(pin_closed) == 0)
 		print('\topened: ', GPIO.input(pin_open) == 0)
 		print('Button: ',  GPIO.input(pin_btn) == 0)
 	if (GPIO.input(pin_closed)):
 		if(deb): print('initializing')
-		door_close()
+		tray_close()
 
 	print('Please press the button to start tea brewing')
 	state = 0
@@ -138,22 +145,22 @@ try:
 			if (state == 0):
 				GPIO.output(pin_led, True)
 				if (stop == False):
-					door_open(False)
+					tray_open(False)
 					state = 1
 					print('Please attach fresh tea bag and press the button')
 				else:
 					if ((time.time() - tstop) > 2):
-						door_close()
+						tray_close()
 						stop = False
 						print('Please press the button to start tea brewing')
 				continue
 			if (state == 1):
-				print('Starting tea brewing, to stop press the button when lid is open')
+				print('Starting tea brewing, to stop press the button when tray is open')
 				stop = False
-				door_close()
-				print('Presoaking for 10 seconds', end='')
+				tray_close()
+				print('Presoaking for {} seconds'.format(presoaking), end='')
 				sys.stdout.flush()
-				led_sleep(10)
+				led_sleep(presoaking)
 				print('')
 				for i in range (0,steps):
 					if (stop == True):
@@ -161,10 +168,10 @@ try:
 						tstop = time.time()
 						break
 					print("\r{} cycles left".format(steps - i), end='')
-					door_cycle(i, True)
+					tray_cycle(i, True)
 					sys.stdout.flush()
 				else:
-					door_open(False)
+					tray_open(False)
 				state = 2
 				GPIO.output(pin_led, False)
 				if (stop == False):
@@ -173,7 +180,7 @@ try:
 				continue
 			if (state == 2):
 				if (stop == False):
-					door_close()
+					tray_close()
 					print('Please press the button to start tea brewing')
 				state = 0;
 				continue
@@ -182,4 +189,7 @@ except:
     pass
 
 print('\nRestoring GPIO status')
+
+tray_close()
+GPIO.output(pin_led, False)
 GPIO.cleanup()
