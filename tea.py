@@ -120,7 +120,7 @@ try:
 	# convert seconds to steps
 	steps = (brewing * 60) / 10 - 1
 	steps = int(steps)
-	print('Brewing time is set to {} minutes or {} steps'.format(brewing, steps))
+	print('Brewing time is set to {} minutes or {} cycles'.format(brewing, steps))
 	if (deb):
 		print('door sensor state:')
 		print('\tclosed: ', GPIO.input(pin_closed) == 0)
@@ -140,7 +140,7 @@ try:
 				if (stop == False):
 					door_open(False)
 					state = 1
-					print('Please attach new tea bag and press the button')
+					print('Please attach fresh tea bag and press the button')
 				else:
 					if ((time.time() - tstop) > 2):
 						door_close()
@@ -160,7 +160,7 @@ try:
 						print('\nTerminating brewing process, press the button to close')
 						tstop = time.time()
 						break
-					print("\r{} steps left".format(steps - i), end='')
+					print("\r{} cycles left".format(steps - i), end='')
 					door_cycle(i, True)
 					sys.stdout.flush()
 				else:
@@ -168,7 +168,8 @@ try:
 				state = 2
 				GPIO.output(pin_led, False)
 				if (stop == False):
-					print("\rYour tea is ready! Please remove used tea bag and press the button to close.")
+					print("\rExecuted {} cycles.".format(steps))
+					print("Your tea is ready! Please remove used tea bag and press the button to close.")
 				continue
 			if (state == 2):
 				if (stop == False):
