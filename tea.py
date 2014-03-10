@@ -217,6 +217,6 @@ except:
 
 print('\nRestoring GPIO status')
 
-tray_close()
+tray_close(nobreak)
 GPIO.output(pin_led, False)
 GPIO.cleanup()
