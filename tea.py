@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import os
 import sys
 import time
+import argparse
 import RPi.GPIO as GPIO
 
 pin_closed = 17 # CD tray sensor
@@ -12,11 +12,20 @@ pin_red = 23    # motor's red wire
 pin_gnd = 24    # motor's gnd wire 
 pin_led = 25    # LED
 
-deb = False   # debug output
-stop = False  # termination flag
+stop = False    # termination flag
+dobreak = True
+nobreak = False
 
-presoaking = 10 # pre-soaking time, sec
+# command line arguments
+dbg = False     # debug output
 soak = 5        # soaking time, sec
+brewing = 2.5   # brewing time, min
+presoaking = 10 # pre-soaking time, sec
+
+# brewing states
+START   = 0
+BREWING = 1
+READY   = 2
 
 GPIO.setmode(GPIO.BCM)
 
@@ -44,9 +53,9 @@ def motor(cmd):
 		return
 
 # opens CD tray
-def tray_open(brewing):
+def tray_open(breakable = False):
 	if (GPIO.input(pin_open) == False):
-		if (deb): print('\ttray already opened')
+		if (dbg): print('\ttray already opened')
 		return
 
 	led = 1
@@ -56,21 +65,21 @@ def tray_open(brewing):
 	while(1):
 		if (GPIO.input(pin_open) == False):
 			break
+		if (breakable and GPIO.input(pin_btn) == 0):
+			global stop
+			stop = True
 		if ((time.time() - tstamp) >= 0.1):
 			tstamp = time.time()
 			led = led ^ 1	
 			GPIO.output(pin_led, led)
 	motor('stop')
-	if (brewing and GPIO.input(pin_btn) == 0):
-		global stop
-		stop = True
-	if (deb): print('\ttray opened')
+	if (dbg): print('\ttray opened')
 	return
 
 # closes CD tray
-def tray_close():
+def tray_close(breakable = True):
 	if (GPIO.input(pin_closed) == False):
-		if (deb): print("\ttray already closed")
+		if (dbg): print("\ttray already closed")
 		return
 	led = 1
 	tstamp = time.time()
@@ -79,17 +88,23 @@ def tray_close():
 	while(1):
 		if (GPIO.input(pin_closed) == False):
 			break
+		if (breakable and GPIO.input(pin_btn) == 0):
+			global stop
+			stop = True
+			break
 		if ((time.time() - tstamp) >= 0.1):
 			tstamp = time.time()
 			led = led ^ 1	
 			GPIO.output(pin_led, led)
 	motor('stop')
-	if (deb): print("\ttray closed")
+	if (dbg): print("\ttray closed")
 	GPIO.output(pin_led, False)
 	return
 
 # sleeps and flashes LED
 def led_sleep(sleep):
+	if (sleep <= 0):
+		return
 	led = 1
 	tstamp = time.time()
 	GPIO.output(pin_led, led)
@@ -98,66 +113,78 @@ def led_sleep(sleep):
 		led = led ^ 1	
 		GPIO.output(pin_led, led)
 		if (GPIO.input(pin_btn) == 0):
-			tray_open(False)
+			tray_open(nobreak)
 			global stop
 			stop = True
 			break
 	GPIO.output(pin_led, False)
 
 # cycles through open-close-sleep states	
-def tray_cycle(i, brewing):
+def tray_cycle(i, breakable):
 	global stop
 	start = time.time()
-	if (deb): print("starting cycle {}".format(i+1))
-	tray_open(brewing)
+	if (dbg): print("starting cycle {}".format(i+1))
+	tray_open(breakable)
 	if (stop == False):
-		tray_close()
+		tray_close(dobreak)
 		led_sleep(soak)
+	if (stop == True):
+		tray_open(nobreak)
 	end = time.time()
-	if (deb): print('cycle time {0:.2f} sec'.format(end - start))
+	if (dbg): print('cycle time {0:.2f} sec'.format(end - start))
 
-# main	
+# main
+# parse arguments
+parser = argparse.ArgumentParser(description="""CD Tea Brewing Machine""");
+parser.add_argument('--dbg', action='store_true', default = False, help="Enable debug output")
+parser.add_argument('--brewing', type=float, default=2.5, help="Brewing time, min")
+parser.add_argument('--soak', type=int, default=5, help="Tea bag soaking time, per cycle, sec")
+parser.add_argument('--presoaking', type=int, default=10, help="Tea bag pre-soaking time, sec")
+
+args = parser.parse_args()
+
+dbg = args.dbg
+soak = args.soak
+brewing = args.brewing
+presoaking = args.presoaking
+
 try:
-	# one command line parameter - brewing time, minutes 
-	brewing = len(sys.argv)
-	if (brewing > 1):
-		brewing = float(sys.argv[1])
-	else:
-		brewing = 2.0 # default - 2 minutes
 	# convert seconds to steps
 	steps = (brewing * 60) / 10 - 1
 	steps = int(steps)
 	print('Brewing time is set to {} minutes or {} cycles'.format(brewing, steps))
-	if (deb):
+	if (dbg):
+		print('Presoaking: {} sec'.format(presoaking))
+		print('Each cycle soak time: {} sec'.format(soak))
 		print('tray sensor state:')
 		print('\tclosed: ', GPIO.input(pin_closed) == 0)
 		print('\topened: ', GPIO.input(pin_open) == 0)
 		print('Button: ',  GPIO.input(pin_btn) == 0)
 	if (GPIO.input(pin_closed)):
-		if(deb): print('initializing')
-		tray_close()
+		if(dbg): print('initializing')
+		tray_close(nobreak)
 
 	print('Please press the button to start tea brewing')
-	state = 0
+	state = START
 	tstop = 0
 	while(1):
 		if (GPIO.input(pin_btn) == 0):
-			if (state == 0):
+			if (state == START):
 				GPIO.output(pin_led, True)
 				if (stop == False):
-					tray_open(False)
-					state = 1
+					tray_open(nobreak)
+					state = BREWING
 					print('Please attach fresh tea bag and press the button')
 				else:
 					if ((time.time() - tstop) > 2):
-						tray_close()
 						stop = False
+						tray_close(nobreak)
 						print('Please press the button to start tea brewing')
 				continue
-			if (state == 1):
-				print('Starting tea brewing, to stop press the button when tray is open')
+			if (state == BREWING):
+				print('Starting tea brewing, to stop press the button')
 				stop = False
-				tray_close()
+				tray_close(nobreak)
 				print('Presoaking for {} seconds'.format(presoaking), end='')
 				sys.stdout.flush()
 				led_sleep(presoaking)
@@ -167,22 +194,22 @@ try:
 						print('\nTerminating brewing process, press the button to close')
 						tstop = time.time()
 						break
-					print("\r{} cycles left".format(steps - i), end='')
-					tray_cycle(i, True)
+					print("\r{} cycles left ".format(steps - i), end='')
+					tray_cycle(i, dobreak)
 					sys.stdout.flush()
 				else:
-					tray_open(False)
-				state = 2
+					tray_open(nobreak)
+				state = READY
 				GPIO.output(pin_led, False)
 				if (stop == False):
 					print("\rExecuted {} cycles.".format(steps))
 					print("Your tea is ready! Please remove used tea bag and press the button to close.")
 				continue
-			if (state == 2):
+			if (state == READY):
 				if (stop == False):
-					tray_close()
+					tray_close(nobreak)
 					print('Please press the button to start tea brewing')
-				state = 0;
+				state = START;
 				continue
 		
 except:
