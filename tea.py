@@ -5,6 +5,11 @@ import time
 import argparse
 import RPi.GPIO as GPIO
 
+###
+# For remote debugging from Visual Studio uncomment following two lines
+#import ptvsd
+#ptvsd.enable_attach(secret=None)
+
 pin_closed = 17 # CD tray sensor
 pin_open = 18   # CD tray sensor
 pin_btn = 22    # CD button
