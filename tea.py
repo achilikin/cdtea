@@ -14,7 +14,7 @@ pin_closed = 17 # CD tray sensor
 pin_open = 18   # CD tray sensor
 pin_btn = 22    # CD button
 pin_red = 23    # motor's red wire
-pin_gnd = 24    # motor's gnd wire 
+pin_gnd = 24    # motor's gnd wire
 pin_led = 25    # LED
 
 stop = False    # termination flag
@@ -75,7 +75,7 @@ def tray_open(breakable = False):
 			stop = True
 		if ((time.time() - tstamp) >= 0.1):
 			tstamp = time.time()
-			led = led ^ 1	
+			led = led ^ 1
 			GPIO.output(pin_led, led)
 	motor('stop')
 	if (dbg): print('\ttray opened')
@@ -99,7 +99,7 @@ def tray_close(breakable = True):
 			break
 		if ((time.time() - tstamp) >= 0.1):
 			tstamp = time.time()
-			led = led ^ 1	
+			led = led ^ 1
 			GPIO.output(pin_led, led)
 	motor('stop')
 	if (dbg): print("\ttray closed")
@@ -115,7 +115,7 @@ def led_sleep(sleep):
 	GPIO.output(pin_led, led)
 	while((time.time() - tstamp) < sleep):
 		time.sleep(0.1)
-		led = led ^ 1	
+		led = led ^ 1
 		GPIO.output(pin_led, led)
 		if (GPIO.input(pin_btn) == 0):
 			tray_open(nobreak)
@@ -124,7 +124,7 @@ def led_sleep(sleep):
 			break
 	GPIO.output(pin_led, False)
 
-# cycles through open-close-sleep states	
+# cycles through open-close-sleep states
 def tray_cycle(i, breakable):
 	global stop
 	start = time.time()
@@ -216,7 +216,7 @@ try:
 					print('Please press the button to start tea brewing')
 				state = START;
 				continue
-		
+
 except:
     pass
 
