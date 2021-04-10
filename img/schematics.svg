@@ -9,9 +9,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="157.02174mm"
-   height="68.364525mm"
-   viewBox="0 0 445.10169 193.78925"
+   width="230.53296mm"
+   height="97.546921mm"
+   viewBox="0 0 435.65284 184.34065"
    xml:space="preserve"
    color-interpolation-filters="sRGB"
    class="st14"
@@ -39,14 +39,16 @@
    fit-margin-left="5"
    fit-margin-right="5"
    fit-margin-bottom="5"
-   inkscape:zoom="1"
-   inkscape:cx="42.274344"
-   inkscape:cy="97.340746"
+   inkscape:zoom="1.4142136"
+   inkscape:cx="328.57355"
+   inkscape:cy="112.88929"
    inkscape:window-x="1912"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
    inkscape:current-layer="g1199"
-   inkscape:document-rotation="0" />
+   inkscape:document-rotation="0"
+   scale-x="0.5"
+   inkscape:document-units="px" />
 	<v:documentProperties
    v:langID="1033"
    v:metric="true"
@@ -384,7 +386,7 @@
    v:index="1"
    v:groupContext="foregroundPage"
    id="g1199"
-   transform="translate(-184.26455,-183.08689)">
+   transform="translate(-188.98898,-187.81118)">
 		<title
    id="title11">Page-1</title>
 		<v:pageProperties
