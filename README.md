@@ -10,5 +10,6 @@ Terminal output example:
 
 Motor driver and I/O schematics:
 
-![Schematics](./img/schematics.svg)
+<img src="./img/schematics.svg" width="600px"/>
+
 
