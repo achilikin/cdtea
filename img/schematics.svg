@@ -39,9 +39,9 @@
    fit-margin-left="5"
    fit-margin-right="5"
    fit-margin-bottom="5"
-   inkscape:zoom="5.6568544"
-   inkscape:cx="534.59715"
-   inkscape:cy="215.31004"
+   inkscape:zoom="1.4142136"
+   inkscape:cx="419.12373"
+   inkscape:cy="178.16501"
    inkscape:window-x="1912"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
@@ -380,7 +380,10 @@
 		
 				
 				
-			</defs>
+			
+				
+				
+							</defs>
 	<g
    v:mID="0"
    v:index="1"
@@ -4389,5 +4392,53 @@
    v:langID="2057"
    id="text1498"
    style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
-   v:horizAlign="1" /><v:tabList />B</text>			</g></g></g>
+   v:horizAlign="1" /><v:tabList />B</text>			</g></g><text
+   x="471.42746"
+   y="268.39917"
+   class="st5"
+   v:langID="2057"
+   id="text1481"><v:paragraph
+   v:horizAlign="1" /><v:tabList />10k</text><text
+   x="497.59039"
+   y="278.82898"
+   class="st5"
+   v:langID="2057"
+   id="text1485"><v:paragraph
+   v:horizAlign="1" /><v:tabList />10k</text><text
+   x="564.05847"
+   y="265.04041"
+   class="st5"
+   v:langID="2057"
+   id="text1487"><v:paragraph
+   v:horizAlign="1" /><v:tabList />10k</text><text
+   x="510.84866"
+   y="296.68344"
+   class="st5"
+   v:langID="2057"
+   id="text1492"><v:paragraph
+   v:horizAlign="1" /><v:tabList />1k</text><text
+   x="454.45691"
+   y="296.68344"
+   class="st5"
+   v:langID="2057"
+   id="text1494"><v:paragraph
+   v:horizAlign="1" /><v:tabList />1k</text><text
+   x="330.70691"
+   y="231.68344"
+   class="st5"
+   v:langID="2057"
+   id="text1496"><v:paragraph
+   v:horizAlign="1" /><v:tabList />1k</text><text
+   x="368.20691"
+   y="333.18344"
+   class="st5"
+   v:langID="2057"
+   id="text1501"><v:paragraph
+   v:horizAlign="1" /><v:tabList />400</text><path
+   d="m 440.76749,240.4536 a 0.680315,0.680315 0 0 0 0,1.36063 0.680315,0.680315 0 0 0 0,-1.36063"
+   class="st1"
+   id="path1503"
+   inkscape:transform-center-x="4.1488377"
+   inkscape:transform-center-y="2.2927787"
+   style="fill:#000000;fill-opacity:1" /></g>
 </svg>
