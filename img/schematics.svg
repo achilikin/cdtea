@@ -9,9 +9,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="230.53296mm"
-   height="97.546921mm"
-   viewBox="0 0 435.65284 184.34065"
+   width="843.51038"
+   height="340.88599"
+   viewBox="0 0 421.75519 170.44299"
    xml:space="preserve"
    color-interpolation-filters="sRGB"
    class="st14"
@@ -21,7 +21,7 @@
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"><metadata
    id="metadata1205"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
    borderopacity="1"
@@ -34,14 +34,14 @@
    inkscape:window-height="1137"
    id="namedview1203"
    showgrid="false"
-   units="mm"
+   units="px"
    fit-margin-top="5"
    fit-margin-left="5"
    fit-margin-right="5"
    fit-margin-bottom="5"
-   inkscape:zoom="1.4142136"
-   inkscape:cx="328.57355"
-   inkscape:cy="112.88929"
+   inkscape:zoom="5.6568544"
+   inkscape:cx="534.59715"
+   inkscape:cy="215.31004"
    inkscape:window-x="1912"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
@@ -386,7 +386,7 @@
    v:index="1"
    v:groupContext="foregroundPage"
    id="g1199"
-   transform="translate(-188.98898,-187.81118)">
+   transform="translate(-195.9378,-194.76)">
 		<title
    id="title11">Page-1</title>
 		<v:pageProperties
@@ -4158,5 +4158,236 @@
    class="st5"
    v:langID="2057"
    id="text1781"><v:paragraph
-   v:horizAlign="1" /><v:tabList />button</text>			</g></g>
+   v:horizAlign="1" /><v:tabList />button</text>			</g><g
+   id="g1454"
+   transform="translate(0.53033007,5.5242716)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="path1445"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1449"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.447976"
+   y="-591.03998"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1447"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />C</text>			</g></g><g
+   id="g1462"
+   transform="translate(-1.0606601,77.295608)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="ellipse1456"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1460"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.354226"
+   y="-590.97748"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1458"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />D</text>			</g></g><g
+   id="g1470"
+   transform="translate(96.689337,51.045609)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="ellipse1464"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1468"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.221643"
+   y="-590.97748"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1466"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />E</text>			</g></g><g
+   id="g1478"
+   transform="translate(115.60444,63.02223)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="ellipse1472"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1476"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.089061"
+   y="-590.97748"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1474"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />F</text>			</g></g><g
+   id="g1486"
+   transform="translate(323.10443,25.522231)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="ellipse1480"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1484"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.714061"
+   y="-591.03998"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1482"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />G</text>			</g></g><g
+   id="g1494"
+   transform="translate(234.98125,39.664366)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="ellipse1488"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1492"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.360507"
+   y="-591.03998"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1490"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />A</text>			</g></g><g
+   id="g1502"
+   transform="translate(250.5376,39.575978)"><ellipse
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:3;stroke-dasharray:0.4, 0.2;stroke-dashoffset:0"
+     id="ellipse1496"
+     cx="246.81715"
+     cy="258.35364"
+     rx="2.9693074"
+     ry="2.9693062" /><g
+     id="g1500"
+     v:mID="164"
+     v:groupContext="groupContent"
+     v:layerMember="0"
+     style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"
+     transform="rotate(180,128.72552,425.638)">
+				<v:textBlock
+   v:margins="rect(1,1,1,1)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+				<v:textRect
+   cx="9.92126"
+   cy="592.441"
+   width="9.45"
+   height="9.20349"
+   transform="rotate(180)" />
+				<text
+   x="-12.272119"
+   y="-591.03998"
+   transform="scale(-1)"
+   class="st5"
+   v:langID="2057"
+   id="text1498"
+   style="stroke-width:0.275;stroke-miterlimit:3;stroke-dasharray:none"><v:paragraph
+   v:horizAlign="1" /><v:tabList />B</text>			</g></g></g>
 </svg>

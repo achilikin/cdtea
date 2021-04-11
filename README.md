@@ -8,7 +8,8 @@ Terminal output example:
 
 ![Terminal](./img/cdtea-term.jpg)
 
-Motor driver and I/O schematics:
+Motor driver and I/O wiring and schematics diagrams:
+
+![Wiring](./img/cdtea-wires.png)
 
 ![Schematics](./img/schematics.svg)
-
